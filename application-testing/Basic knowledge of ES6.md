@@ -9,7 +9,7 @@
 ```
 let x = 'hello world';
 if (true) {
-	x = 'hello';
+    x = 'hello';
 }
 
 const a = 1;
@@ -55,19 +55,19 @@ s.endsWith('!') // true
 // bad
 const a = [1, 2, 3, 4,];
 const b = [
-	1,
-	2,
-	3,
-	4
+    1,
+    2,
+    3,
+    4
 ]
 
 // good
 const a = [1, 2, 3, 4];
 const b = [
-	1,
-	2,
-	3,
-	4,
+    1,
+    2,
+    3,
+    4,
 ]
 
 ```
@@ -108,7 +108,7 @@ const arr3 = [...arr1, ...arr2]; // [1, 2, 3, 4, 7, 8, 1, 2, 3, 4];
 
 ```
 for (const item of [1, 2, 3, 4]) {
-	console.log(item);
+    console.log(item);
 }
 // 1
 // 2
@@ -143,15 +143,15 @@ for (const item of [1, 2, 3, 4]) {
 // bad
 const a = { k1: v1, k2: v2, };
 const b = {
-	k1: v1,
-	k2: v2
+    k1: v1,
+    k2: v2
 };
 
 // good
 const a = { k1: v1, k2: v2 };
 const b = {
-	k1: v1,
-	k2: v2,
+    k1: v1,
+    k2: v2,
 };
 
 ```
@@ -163,8 +163,8 @@ const obj = {a: 1, b: 2};
 
 // 遍历对象的key和vaule
 for (const item of Reflect.ownKeys(obj)) {
-	console.log(item); // key
-	console.log(obj[itme]); // value
+    console.log(item); // key
+    console.log(obj[itme]); // value
 }
 // a
 // 1
@@ -191,8 +191,8 @@ const [first, second] = arr;
 
 ```
 const obj = {
-	a: 'apple',
-	b: 'banana',
+    a: 'apple',
+    b: 'banana',
 }
 
 // bad
@@ -244,8 +244,8 @@ toArr(2, 5, 3); // [2, 5, 3]
 
 ```
 const func = (str, ...items) => {
-  	// str >> 'a'
-  	// items >> [1, 2, 3]
+    // str >> 'a'
+    // items >> [1, 2, 3]
 }
 
 func('a', 1, 2, 3)
@@ -257,7 +257,7 @@ func('a', 1, 2, 3)
 ```
 // 报错
 const = f => (a, ...b, c) {
-  	// ...
+    // ...
 }
 
 ```
@@ -278,39 +278,39 @@ log('Hello', '') // Hello
 * 逻辑判断
 
 ```
-	'abc' === 'abc'; // true
-	123 === 123; // true
-	'123' === 123; // false
-	'123' !== 123; // true
-	
-	[] === []; // false
-	{} === {}; // false
-	
-	const obj = {};
-	obj === obj; // true
-	
-	const arr = [];
-	arr === arr; // true
-	
-	1 > 5; // false
-	1 >= 5; // false
-	1 < 5; // true
-	1 <= 5; // true
-	
-	true === true // true
-	false === false // true
-	true === false // false
-	true === !false // true
-	!true === false // true
-	
-	true && true; // true
-	true && false; // false
-	false && false; // false
-	true || true; // true	
-	true || false; // true
-	false || false; // false
+    'abc' === 'abc'; // true
+    123 === 123; // true
+    '123' === 123; // false
+    '123' !== 123; // true
+    
+    [] === []; // false
+    {} === {}; // false
+    
+    const obj = {};
+    obj === obj; // true
+    
+    const arr = [];
+    arr === arr; // true
+    
+    1 > 5; // false
+    1 >= 5; // false
+    1 < 5; // true
+    1 <= 5; // true
+    
+    true === true // true
+    false === false // true
+    true === false // false
+    true === !false // true
+    !true === false // true
+    
+    true && true; // true
+    true && false; // false
+    false && false; // false
+    true || true; // true   
+    true || false; // true
+    false || false; // false
 
-	
+    
 ```
 
 * 控制语句
@@ -343,8 +343,8 @@ if (flase) {
 ```
 let i = 5;
 while (i > 0) {
-	console.log(i);
-	i--; // i = i - 1;
+    console.log(i);
+    i--; // i = i - 1;
 }
 // 5
 // 4
@@ -356,7 +356,7 @@ while (i > 0) {
 
 ```
 for (let i = 0; i < 5; i++) {
-	console.log(i);
+    console.log(i);
 }
 // 0
 // 1
@@ -372,7 +372,7 @@ for (let i = 0; i < 5; i++) {
 
 * 请自行查询资料
 
-	[w3school RegExp](http://www.w3school.com.cn/jsref/jsref_obj_regexp.asp)
+    [w3school RegExp](http://www.w3school.com.cn/jsref/jsref_obj_regexp.asp)
 
 ## * 9. Map数据结构
 
@@ -405,8 +405,8 @@ map.get(1)
 ```
 
 * size属性
-	
-	size属性返回 Map 结构的成员总数。
+    
+    size属性返回 Map 结构的成员总数。
 
 ```
 const map = new Map();
@@ -418,9 +418,9 @@ map.size // 2
 ```
 
 * set(key, value)
-	
-	set方法设置键名key对应的键值为value，然后返回整个 Map 结构。如果key已经有值，则键值会被更新，否则就新生成该键。
-	
+    
+    set方法设置键名key对应的键值为value，然后返回整个 Map 结构。如果key已经有值，则键值会被更新，否则就新生成该键。
+    
 ```
 const m = new Map();
 
@@ -437,8 +437,8 @@ let map = new Map()
 
 * get(key)
 
-	get方法读取key对应的键值，如果找不到key，返回undefined。
-	
+    get方法读取key对应的键值，如果找不到key，返回undefined。
+    
 ```
 const m = new Map();
 
@@ -451,8 +451,8 @@ m.get(hello)  // Hello ES6!
 
 * has(key)
 
-	has方法返回一个布尔值，表示某个键是否在当前 Map 对象之中。
-	
+    has方法返回一个布尔值，表示某个键是否在当前 Map 对象之中。
+    
 ```
 const m = new Map();
 
@@ -469,7 +469,7 @@ m.has(undefined)     // true
 
 * delete(key)
 
-	delete方法删除某个键，返回true。如果删除失败，返回false。
+    delete方法删除某个键，返回true。如果删除失败，返回false。
 
 ```
 const m = new Map();
@@ -483,8 +483,8 @@ m.has(undefined)       // false
 
 * clear()
 
-	clear方法清除所有成员，没有返回值。
-	
+    clear方法清除所有成员，没有返回值。
+    
 ```
 let map = new Map();
 map.set('foo', true);
@@ -498,15 +498,15 @@ map.size // 0
 
 * 遍历方法
 
-	Map 结构原生提供三个遍历器生成函数和一个遍历方法。
+    Map 结构原生提供三个遍历器生成函数和一个遍历方法。
 
-	* keys()：返回键名的遍历器。
-	* values()：返回键值的遍历器。
-	* entries()：返回所有成员的遍历器。
-	* forEach()：遍历 Map 的所有成员。
+    * keys()：返回键名的遍历器。
+    * values()：返回键值的遍历器。
+    * entries()：返回所有成员的遍历器。
+    * forEach()：遍历 Map 的所有成员。
 
-	需要特别注意的是，Map 的遍历顺序就是插入顺序。
-	
+    需要特别注意的是，Map 的遍历顺序就是插入顺序。
+    
 ```
 const map = new Map([
   ['F', 'no'],
@@ -583,10 +583,10 @@ for (let i of s) {
 
 * 操作方法
 
-	* add(value)：添加某个值，返回Set结构本身。
-	* delete(value)：删除某个值，返回一个布尔值，表示删除是否成功。
-	* has(value)：返回一个布尔值，表示该值是否为Set的成员。
-	* clear()：清除所有成员，没有返回值。
+    * add(value)：添加某个值，返回Set结构本身。
+    * delete(value)：删除某个值，返回一个布尔值，表示删除是否成功。
+    * has(value)：返回一个布尔值，表示该值是否为Set的成员。
+    * clear()：清除所有成员，没有返回值。
 
 ```
 s.add(1).add(2).add(2);
@@ -608,10 +608,10 @@ s.size // 0
 
 * 遍历操作
 
-	* keys()：返回键名的遍历器
-	* values()：返回键值的遍历器
-	* entries()：返回键值对的遍历器
-	* forEach()：使用回调函数遍历每个成员
+    * keys()：返回键名的遍历器
+    * values()：返回键值的遍历器
+    * entries()：返回键值对的遍历器
+    * forEach()：使用回调函数遍历每个成员
 
 ```
 let set = new Set(['red', 'green', 'blue']);
