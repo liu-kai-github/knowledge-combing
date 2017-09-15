@@ -210,7 +210,7 @@ const {a, b: abc} = obj;
 
 ```
 (() => {
-  console.log('Welcome to the Internet.');
+    console.log('Welcome to the Internet.');
 })();
 
 ```
@@ -220,12 +220,12 @@ const {a, b: abc} = obj;
 ```
 // bad
 [1, 2, 3].map(function (x) {
-  return x * x;
+    return x * x;
 });
 
 // good
 [1, 2, 3].map((x) => {
-  return x * x;
+    return x * x;
 });
 
 // best
@@ -382,15 +382,15 @@ for (let i = 0; i < 5; i++) {
 let map = new Map(arr);
 
 for (let key of map.keys()) {
-  console.log(key);
+    console.log(key);
 }
 
 for (let value of map.values()) {
-  console.log(value);
+    console.log(value);
 }
 
 for (let item of map.entries()) {
-  console.log(item[0], item[1]);
+    console.log(item[0], item[1]);
 }
 
 ```
@@ -429,9 +429,9 @@ m.set(262, 'standard')     // 键是数值
 m.set(undefined, 'nah')    // 键是 undefined
 
 let map = new Map()
-  .set(1, 'a')
-  .set(2, 'b')
-  .set(3, 'c');
+    .set(1, 'a')
+    .set(2, 'b')
+    .set(3, 'c');
 
 ```
 
@@ -509,38 +509,38 @@ map.size // 0
     
 ```
 const map = new Map([
-  ['F', 'no'],
-  ['T',  'yes'],
+    ['F', 'no'],
+    ['T',  'yes'],
 ]);
 
 for (let key of map.keys()) {
-  console.log(key);
+    console.log(key);
 }
 // "F"
 // "T"
 
 for (let value of map.values()) {
-  console.log(value);
+    console.log(value);
 }
 // "no"
 // "yes"
 
 for (let item of map.entries()) {
-  console.log(item[0], item[1]);
+    console.log(item[0], item[1]);
 }
 // "F" "no"
 // "T" "yes"
 
 // 或者
 for (let [key, value] of map.entries()) {
-  console.log(key, value);
+    console.log(key, value);
 }
 // "F" "no"
 // "T" "yes"
 
 // 等同于使用map.entries()
 for (let [key, value] of map) {
-  console.log(key, value);
+    console.log(key, value);
 }
 // "F" "no"
 // "T" "yes"
@@ -559,7 +559,7 @@ const s = new Set();
 [2, 3, 5, 4, 5, 2, 2].forEach(x => s.add(x));
 
 for (let i of s) {
-  console.log(i);
+    console.log(i);
 }
 // 2 
 // 3 
@@ -617,21 +617,21 @@ s.size // 0
 let set = new Set(['red', 'green', 'blue']);
 
 for (let item of set.keys()) {
-  console.log(item);
+    console.log(item);
 }
 // red
 // green
 // blue
 
 for (let item of set.values()) {
-  console.log(item);
+    console.log(item);
 }
 // red
 // green
 // blue
 
 for (let item of set.entries()) {
-  console.log(item);
+    console.log(item);
 }
 // ["red", "red"]
 // ["green", "green"]
