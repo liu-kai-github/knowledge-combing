@@ -1,0 +1,1207 @@
+{
+	"id": "2c3b6b30-eebd-9c06-3229-bc4ae7119819",
+	"name": "postman自动化测试",
+	"allTests": [],
+	"timestamp": 1504088275343,
+	"collection_id": "e7c8b51c-557d-9615-d681-d6c3ebd76fca",
+	"folder_id": 0,
+	"target_type": "collection",
+	"environment_id": "0",
+	"data": null,
+	"delay": 0,
+	"count": 1,
+	"collection": {
+		"id": "e7c8b51c-557d-9615-d681-d6c3ebd76fca",
+		"name": "postman自动化测试",
+		"description": "",
+		"order": [],
+		"folders": [
+			{
+				"name": "基础测试",
+				"description": "",
+				"collectionId": "e7c8b51c-557d-9615-d681-d6c3ebd76fca",
+				"collection": "e7c8b51c-557d-9615-d681-d6c3ebd76fca",
+				"order": [
+					"236e2da7-8469-9b1d-a6d8-d190194dce08"
+				],
+				"owner": "502044",
+				"folders_order": [],
+				"createdAt": 1504084990643,
+				"updatedAt": 1504084990643,
+				"id": "ba2242b6-2734-e797-45ba-03e639f27580",
+				"collection_id": "e7c8b51c-557d-9615-d681-d6c3ebd76fca"
+			},
+			{
+				"name": "实例测试",
+				"description": "",
+				"collectionId": "e7c8b51c-557d-9615-d681-d6c3ebd76fca",
+				"collection": "e7c8b51c-557d-9615-d681-d6c3ebd76fca",
+				"order": [
+					"21cc5004-5244-cf1a-7825-d8d1e0ce5e9a",
+					"25b4ebd6-296f-6ff3-4761-c0f6676e5592"
+				],
+				"owner": "502044",
+				"folders_order": [],
+				"createdAt": 1504085022763,
+				"updatedAt": 1504085022763,
+				"id": "1294ee52-a8aa-dc7c-aabf-1e184c46d495",
+				"collection_id": "e7c8b51c-557d-9615-d681-d6c3ebd76fca"
+			}
+		],
+		"folders_order": [
+			"ba2242b6-2734-e797-45ba-03e639f27580",
+			"1294ee52-a8aa-dc7c-aabf-1e184c46d495"
+		],
+		"requests": [
+			{
+				"id": "21cc5004-5244-cf1a-7825-d8d1e0ce5e9a",
+				"headers": "",
+				"headerData": [],
+				"url": "http://wxtest.xw18.cn/basedata/get_city_by_code?code=4403",
+				"queryParams": [
+					{
+						"key": "code",
+						"value": "4403",
+						"equals": true,
+						"description": "",
+						"enabled": true
+					}
+				],
+				"preRequestScript": null,
+				"pathVariables": {},
+				"pathVariableData": [],
+				"method": "GET",
+				"data": null,
+				"dataMode": "params",
+				"version": 2,
+				"tests": "if(responseCode.code === 200) {\n    tests['状态码为200'] = true;\n    tests[`本次响应时间为${responseTime}毫秒，小于200毫秒`] = responseTime < 200;\n    tests['响应数据类型为 application/json'] = postman.getResponseHeader(\"Content-Type\") === 'application/json';\n} else {\n    throw new Error(`状态码为${responseCode.code}，无法继续判断`);\n}\n\n//需求逻辑判断\nconst jsonData = JSON.parse(responseBody);\nif (jsonData.code === 0) {\n    tests['后台已正确响应'] = true;\n    const testData = jsonData.data;\n    tests['code为4403'] = testData.code === 4403;\n    tests['name为深圳'] = testData.name === '深圳';\n} else {\n    tests['后台未正确响应']\n}\n    \n    \n\n",
+				"currentHelper": "normal",
+				"helperAttributes": {},
+				"time": 1504085572538,
+				"name": "http://wxtest.xw18.cn/basedata/get_city_by_code?code=4403",
+				"description": "",
+				"collectionId": "e7c8b51c-557d-9615-d681-d6c3ebd76fca",
+				"responses": [],
+				"folder": "1294ee52-a8aa-dc7c-aabf-1e184c46d495"
+			},
+			{
+				"id": "236e2da7-8469-9b1d-a6d8-d190194dce08",
+				"headers": "",
+				"headerData": [],
+				"url": "http://wxtest.xw18.cn/basedata/get_city_by_code?code=4403",
+				"queryParams": [
+					{
+						"key": "code",
+						"value": "4403",
+						"equals": true,
+						"description": "",
+						"enabled": true
+					}
+				],
+				"preRequestScript": null,
+				"pathVariables": {},
+				"pathVariableData": [],
+				"method": "GET",
+				"data": null,
+				"dataMode": "params",
+				"tests": "// postman响应的基本规则\ntests['true'] = true;  // true\ntests['false'] = false;  // false\ntests['!运算符'] = !false;  // true\ntests['字符串'] = 'string';  // true\ntests['空字符串'] = '';  // false\ntests['数字0'] = 0;  // false\ntests['数字大于0'] = 1;  // true\ntests['数字小于0'] = -1;  // true\ntests['null'] = null;  // false\ntests['undefind'] = undefined;  // false\n\n// 响应内容是否包含哪些字符\ntests[\"Body matches string\"] = responseBody.has(\"string_you_want_to_search\");\n\n// 响应体数据的详细检查\nvar jsonData = JSON.parse(responseBody);\ntests[\"Your test name\"] = jsonData.value === 100;\n\n// 响应头的详细检查\ntests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");\n\n// 响应时间的检查\ntests[\"Response time is less than 200ms\"] = responseTime < 200;\n\n// http响应码检查\ntests[\"Status code is 200\"] = responseCode.code === 200;",
+				"currentHelper": "normal",
+				"helperAttributes": {},
+				"time": 1504085296604,
+				"name": "https://www.baidu.com/",
+				"description": "",
+				"collectionId": "e7c8b51c-557d-9615-d681-d6c3ebd76fca",
+				"responses": [],
+				"folder": "ba2242b6-2734-e797-45ba-03e639f27580"
+			},
+			{
+				"id": "25b4ebd6-296f-6ff3-4761-c0f6676e5592",
+				"headers": "",
+				"headerData": [],
+				"url": "http://wxtest.xw18.cn/producelist?featured=1&page_no=0&page_size=10&shop_id=13439",
+				"queryParams": [
+					{
+						"key": "featured",
+						"value": "1",
+						"equals": true,
+						"description": "",
+						"enabled": true
+					},
+					{
+						"key": "page_no",
+						"value": "0",
+						"equals": true,
+						"description": "",
+						"enabled": true
+					},
+					{
+						"key": "page_size",
+						"value": "10",
+						"equals": true,
+						"description": "",
+						"enabled": true
+					},
+					{
+						"key": "shop_id",
+						"value": "13439",
+						"equals": true,
+						"description": "",
+						"enabled": true
+					}
+				],
+				"preRequestScript": null,
+				"pathVariables": {},
+				"pathVariableData": [],
+				"method": "GET",
+				"data": null,
+				"dataMode": "params",
+				"tests": "if(responseCode.code === 200) {\n    tests['状态码为200'] = true;\n    tests[`本次响应时间为${responseTime}毫秒，小于200毫秒`] = responseTime < 200;\n    tests['响应数据类型为 application/json'] = postman.getResponseHeader(\"Content-Type\") === 'application/json';\n} else {\n    throw new Error(`状态码为${responseCode.code}，无法继续判断`);\n}\n\n// 测试每一项的函数\nconst testItem = item => {\n    const id = item.id;\n    tests[`id为${id}，id存在`] = item.id;\n    tests[`id为${id}的商品，name为${item.name}，name存在`] = item.id;\n    tests[`id为${id}的商品，price为${item.price}，name存在`] = item.price;\n    tests[`id为${id}的商品，price为${item.price}，大于0且小于999999`] = item.price > 0 && item.price < 99999;\n}\n\n// 格式化数据\nconst jsonData = JSON.parse(responseBody);\nif (jsonData.code === 0) {\n    tests['后台已正确响应'] = true;\n    const testData = jsonData.data.objects;\n    tests['返回数据的长度为10'] = testData.length === 10;\n    for (const item of testData) {\n        testItem(item);\n    }\n} else {\n    tests['后台未正确响应']\n}\n\n\n\n",
+				"currentHelper": "normal",
+				"helperAttributes": {},
+				"time": 1504087797216,
+				"name": "http://wxtest.xw18.cn/producelist?featured=1&page_no=0&page_size=3&shop_id=13439",
+				"description": "",
+				"collectionId": "e7c8b51c-557d-9615-d681-d6c3ebd76fca",
+				"responses": [],
+				"folder": "1294ee52-a8aa-dc7c-aabf-1e184c46d495"
+			}
+		],
+		"timestamp": 1504084978771,
+		"synced": false,
+		"syncedFilename": "",
+		"remote_id": 0,
+		"remoteLink": "",
+		"remoteLinkUpdatedAt": null,
+		"public": false,
+		"owner": "502044",
+		"subscribed": false,
+		"createdAt": 1504084978771,
+		"updatedAt": 1504085038862,
+		"write": true,
+		"published": false,
+		"favorite": false,
+		"permissions": {},
+		"syncedPermissions": {},
+		"sharedWithTeam": false
+	},
+	"folder": null,
+	"environment": null,
+	"globals": [
+		{
+			"key": "echo_digest_realm",
+			"type": "text",
+			"value": "Users",
+			"enabled": true
+		},
+		{
+			"key": "echo_digest_nonce",
+			"type": "text",
+			"value": "4sWVdcghiq6omlWeEVAzBiEjPKqacDIF",
+			"enabled": true
+		}
+	],
+	"results": [
+		{
+			"id": "236e2da7-8469-9b1d-a6d8-d190194dce08",
+			"name": "https://www.baidu.com/",
+			"url": "http://wxtest.xw18.cn/basedata/get_city_by_code?code=4403",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"tests": {
+				"true": true,
+				"false": false,
+				"!运算符": true,
+				"字符串": "string",
+				"空字符串": "",
+				"数字0": 0,
+				"数字大于0": 1,
+				"数字小于0": -1,
+				"null": null,
+				"Body matches string": false,
+				"Your test name": false,
+				"Content-Type is present": "application/json",
+				"Response time is less than 200ms": false,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"true": {
+					"pass": 1,
+					"fail": 0
+				},
+				"false": {
+					"pass": 0,
+					"fail": 1
+				},
+				"!运算符": {
+					"pass": 1,
+					"fail": 0
+				},
+				"字符串": {
+					"pass": 1,
+					"fail": 0
+				},
+				"空字符串": {
+					"pass": 0,
+					"fail": 1
+				},
+				"数字0": {
+					"pass": 0,
+					"fail": 1
+				},
+				"数字大于0": {
+					"pass": 1,
+					"fail": 0
+				},
+				"数字小于0": {
+					"pass": 1,
+					"fail": 0
+				},
+				"null": {
+					"pass": 0,
+					"fail": 1
+				},
+				"undefind": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Body matches string": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Your test name": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 200ms": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				210
+			],
+			"allTests": [
+				{
+					"true": true,
+					"false": false,
+					"!运算符": true,
+					"字符串": "string",
+					"空字符串": "",
+					"数字0": 0,
+					"数字大于0": 1,
+					"数字小于0": -1,
+					"null": null,
+					"Body matches string": false,
+					"Your test name": false,
+					"Content-Type is present": "application/json",
+					"Response time is less than 200ms": false,
+					"Status code is 200": true
+				}
+			],
+			"time": 210,
+			"totalRequestTime": 210,
+			"iterationResults": {}
+		},
+		{
+			"id": "21cc5004-5244-cf1a-7825-d8d1e0ce5e9a",
+			"name": "http://wxtest.xw18.cn/basedata/get_city_by_code?code=4403",
+			"url": "http://wxtest.xw18.cn/basedata/get_city_by_code?code=4403",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"tests": {
+				"状态码为200": true,
+				"本次响应时间为120毫秒，小于200毫秒": true,
+				"响应数据类型为 application/json": true,
+				"后台已正确响应": true,
+				"code为4403": true,
+				"name为深圳": true
+			},
+			"testPassFailCounts": {
+				"状态码为200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"本次响应时间为120毫秒，小于200毫秒": {
+					"pass": 1,
+					"fail": 0
+				},
+				"响应数据类型为 application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"后台已正确响应": {
+					"pass": 1,
+					"fail": 0
+				},
+				"code为4403": {
+					"pass": 1,
+					"fail": 0
+				},
+				"name为深圳": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				120
+			],
+			"allTests": [
+				{
+					"状态码为200": true,
+					"本次响应时间为120毫秒，小于200毫秒": true,
+					"响应数据类型为 application/json": true,
+					"后台已正确响应": true,
+					"code为4403": true,
+					"name为深圳": true
+				}
+			],
+			"time": 120,
+			"totalRequestTime": 120,
+			"iterationResults": {}
+		},
+		{
+			"id": "25b4ebd6-296f-6ff3-4761-c0f6676e5592",
+			"name": "http://wxtest.xw18.cn/producelist?featured=1&page_no=0&page_size=3&shop_id=13439",
+			"url": "http://wxtest.xw18.cn/producelist?featured=1&page_no=0&page_size=10&shop_id=13439",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"tests": {
+				"状态码为200": true,
+				"本次响应时间为96毫秒，小于200毫秒": true,
+				"响应数据类型为 application/json": true,
+				"后台已正确响应": true,
+				"返回数据的长度为10": true,
+				"id为1132，id存在": 1132,
+				"id为1132的商品，name为芝士肠仔，name存在": 1132,
+				"id为1132的商品，price为700，name存在": 700,
+				"id为1132的商品，price为700，大于0且小于999999": true,
+				"id为1131，id存在": 1131,
+				"id为1131的商品，name为田园沙拉，name存在": 1131,
+				"id为1131的商品，price为2800，name存在": 2800,
+				"id为1131的商品，price为2800，大于0且小于999999": true,
+				"id为1130，id存在": 1130,
+				"id为1130的商品，name为时蔬沙拉，name存在": 1130,
+				"id为1130的商品，price为2800，name存在": 2800,
+				"id为1130的商品，price为2800，大于0且小于999999": true,
+				"id为1129，id存在": 1129,
+				"id为1129的商品，name为生炒牛肉饭，name存在": 1129,
+				"id为1129的商品，price为2800，name存在": 2800,
+				"id为1129的商品，price为2800，大于0且小于999999": true,
+				"id为1134，id存在": 1134,
+				"id为1134的商品，name为牛扒饭，name存在": 1134,
+				"id为1134的商品，price为6800，name存在": 6800,
+				"id为1134的商品，price为6800，大于0且小于999999": true,
+				"id为1133，id存在": 1133,
+				"id为1133的商品，name为拿破仑意粉，name存在": 1133,
+				"id为1133的商品，price为4200，name存在": 4200,
+				"id为1133的商品，price为4200，大于0且小于999999": true,
+				"id为1127，id存在": 1127,
+				"id为1127的商品，name为马芝拉薯条，name存在": 1127,
+				"id为1127的商品，price为2500，name存在": 2500,
+				"id为1127的商品，price为2500，大于0且小于999999": true,
+				"id为1128，id存在": 1128,
+				"id为1128的商品，name为脆脆皮，name存在": 1128,
+				"id为1128的商品，price为2000，name存在": 2000,
+				"id为1128的商品，price为2000，大于0且小于999999": true,
+				"id为1126，id存在": 1126,
+				"id为1126的商品，name为凯撒沙拉，name存在": 1126,
+				"id为1126的商品，price为2000，name存在": 2000,
+				"id为1126的商品，price为2000，大于0且小于999999": true,
+				"id为1125，id存在": 1125,
+				"id为1125的商品，name为菠菜蝴蝶粉，name存在": 1125,
+				"id为1125的商品，price为4800，name存在": 4800,
+				"id为1125的商品，price为4800，大于0且小于999999": true
+			},
+			"testPassFailCounts": {
+				"状态码为200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"本次响应时间为96毫秒，小于200毫秒": {
+					"pass": 1,
+					"fail": 0
+				},
+				"响应数据类型为 application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"后台已正确响应": {
+					"pass": 1,
+					"fail": 0
+				},
+				"返回数据的长度为10": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1132，id存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1132的商品，name为芝士肠仔，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1132的商品，price为700，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1132的商品，price为700，大于0且小于999999": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1131，id存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1131的商品，name为田园沙拉，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1131的商品，price为2800，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1131的商品，price为2800，大于0且小于999999": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1130，id存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1130的商品，name为时蔬沙拉，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1130的商品，price为2800，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1130的商品，price为2800，大于0且小于999999": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1129，id存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1129的商品，name为生炒牛肉饭，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1129的商品，price为2800，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1129的商品，price为2800，大于0且小于999999": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1134，id存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1134的商品，name为牛扒饭，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1134的商品，price为6800，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1134的商品，price为6800，大于0且小于999999": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1133，id存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1133的商品，name为拿破仑意粉，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1133的商品，price为4200，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1133的商品，price为4200，大于0且小于999999": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1127，id存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1127的商品，name为马芝拉薯条，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1127的商品，price为2500，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1127的商品，price为2500，大于0且小于999999": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1128，id存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1128的商品，name为脆脆皮，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1128的商品，price为2000，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1128的商品，price为2000，大于0且小于999999": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1126，id存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1126的商品，name为凯撒沙拉，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1126的商品，price为2000，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1126的商品，price为2000，大于0且小于999999": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1125，id存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1125的商品，name为菠菜蝴蝶粉，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1125的商品，price为4800，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1125的商品，price为4800，大于0且小于999999": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				96
+			],
+			"allTests": [
+				{
+					"状态码为200": true,
+					"本次响应时间为96毫秒，小于200毫秒": true,
+					"响应数据类型为 application/json": true,
+					"后台已正确响应": true,
+					"返回数据的长度为10": true,
+					"id为1132，id存在": 1132,
+					"id为1132的商品，name为芝士肠仔，name存在": 1132,
+					"id为1132的商品，price为700，name存在": 700,
+					"id为1132的商品，price为700，大于0且小于999999": true,
+					"id为1131，id存在": 1131,
+					"id为1131的商品，name为田园沙拉，name存在": 1131,
+					"id为1131的商品，price为2800，name存在": 2800,
+					"id为1131的商品，price为2800，大于0且小于999999": true,
+					"id为1130，id存在": 1130,
+					"id为1130的商品，name为时蔬沙拉，name存在": 1130,
+					"id为1130的商品，price为2800，name存在": 2800,
+					"id为1130的商品，price为2800，大于0且小于999999": true,
+					"id为1129，id存在": 1129,
+					"id为1129的商品，name为生炒牛肉饭，name存在": 1129,
+					"id为1129的商品，price为2800，name存在": 2800,
+					"id为1129的商品，price为2800，大于0且小于999999": true,
+					"id为1134，id存在": 1134,
+					"id为1134的商品，name为牛扒饭，name存在": 1134,
+					"id为1134的商品，price为6800，name存在": 6800,
+					"id为1134的商品，price为6800，大于0且小于999999": true,
+					"id为1133，id存在": 1133,
+					"id为1133的商品，name为拿破仑意粉，name存在": 1133,
+					"id为1133的商品，price为4200，name存在": 4200,
+					"id为1133的商品，price为4200，大于0且小于999999": true,
+					"id为1127，id存在": 1127,
+					"id为1127的商品，name为马芝拉薯条，name存在": 1127,
+					"id为1127的商品，price为2500，name存在": 2500,
+					"id为1127的商品，price为2500，大于0且小于999999": true,
+					"id为1128，id存在": 1128,
+					"id为1128的商品，name为脆脆皮，name存在": 1128,
+					"id为1128的商品，price为2000，name存在": 2000,
+					"id为1128的商品，price为2000，大于0且小于999999": true,
+					"id为1126，id存在": 1126,
+					"id为1126的商品，name为凯撒沙拉，name存在": 1126,
+					"id为1126的商品，price为2000，name存在": 2000,
+					"id为1126的商品，price为2000，大于0且小于999999": true,
+					"id为1125，id存在": 1125,
+					"id为1125的商品，name为菠菜蝴蝶粉，name存在": 1125,
+					"id为1125的商品，price为4800，name存在": 4800,
+					"id为1125的商品，price为4800，大于0且小于999999": true
+				}
+			],
+			"time": 96,
+			"totalRequestTime": 96,
+			"iterationResults": {}
+		}
+	],
+	"totalPass": 58,
+	"totalFail": 8,
+	"totalTime": 426,
+	"lifecycle": "idle",
+	"willStop": false,
+	"requests": [
+		{
+			"name": "https://www.baidu.com/",
+			"id": "236e2da7-8469-9b1d-a6d8-d190194dce08",
+			"url": "http://wxtest.xw18.cn/basedata/get_city_by_code?code=4403",
+			"time": 210,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"testPassFailCounts": {
+				"true": {
+					"pass": 1,
+					"fail": 0
+				},
+				"false": {
+					"pass": 0,
+					"fail": 1
+				},
+				"!运算符": {
+					"pass": 1,
+					"fail": 0
+				},
+				"字符串": {
+					"pass": 1,
+					"fail": 0
+				},
+				"空字符串": {
+					"pass": 0,
+					"fail": 1
+				},
+				"数字0": {
+					"pass": 0,
+					"fail": 1
+				},
+				"数字大于0": {
+					"pass": 1,
+					"fail": 0
+				},
+				"数字小于0": {
+					"pass": 1,
+					"fail": 0
+				},
+				"null": {
+					"pass": 0,
+					"fail": 1
+				},
+				"undefind": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Body matches string": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Your test name": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 200ms": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"gridTitles": [
+				"true",
+				"false",
+				"!运算符",
+				"字符串",
+				"空字符串",
+				"数字0",
+				"数字大于0",
+				"数字小于0",
+				"null",
+				"undefind",
+				"Body matches string",
+				"Your test name",
+				"Content-Type is present",
+				"Response time is less than 200ms",
+				"Status code is 200"
+			],
+			"gridData": [
+				[
+					true,
+					false,
+					true,
+					true,
+					false,
+					false,
+					true,
+					true,
+					false,
+					null,
+					false,
+					false,
+					true,
+					false,
+					true
+				]
+			],
+			"tests": {
+				"true": true,
+				"false": false,
+				"!运算符": true,
+				"字符串": true,
+				"空字符串": false,
+				"数字0": false,
+				"数字大于0": true,
+				"数字小于0": true,
+				"null": false,
+				"undefind": false,
+				"Body matches string": false,
+				"Your test name": false,
+				"Content-Type is present": true,
+				"Response time is less than 200ms": false,
+				"Status code is 200": true
+			}
+		},
+		{
+			"name": "http://wxtest.xw18.cn/basedata/get_city_by_code?code=4403",
+			"id": "21cc5004-5244-cf1a-7825-d8d1e0ce5e9a",
+			"url": "http://wxtest.xw18.cn/basedata/get_city_by_code?code=4403",
+			"time": 120,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"testPassFailCounts": {
+				"状态码为200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"本次响应时间为120毫秒，小于200毫秒": {
+					"pass": 1,
+					"fail": 0
+				},
+				"响应数据类型为 application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"后台已正确响应": {
+					"pass": 1,
+					"fail": 0
+				},
+				"code为4403": {
+					"pass": 1,
+					"fail": 0
+				},
+				"name为深圳": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"gridTitles": [
+				"状态码为200",
+				"本次响应时间为120毫秒，小于200毫秒",
+				"响应数据类型为 application/json",
+				"后台已正确响应",
+				"code为4403",
+				"name为深圳"
+			],
+			"gridData": [
+				[
+					true,
+					true,
+					true,
+					true,
+					true,
+					true
+				]
+			],
+			"tests": {
+				"状态码为200": true,
+				"本次响应时间为120毫秒，小于200毫秒": true,
+				"响应数据类型为 application/json": true,
+				"后台已正确响应": true,
+				"code为4403": true,
+				"name为深圳": true
+			}
+		},
+		{
+			"name": "http://wxtest.xw18.cn/producelist?featured=1&page_no=0&page_size=3&shop_id=13439",
+			"id": "25b4ebd6-296f-6ff3-4761-c0f6676e5592",
+			"url": "http://wxtest.xw18.cn/producelist?featured=1&page_no=0&page_size=10&shop_id=13439",
+			"time": 96,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"testPassFailCounts": {
+				"状态码为200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"本次响应时间为96毫秒，小于200毫秒": {
+					"pass": 1,
+					"fail": 0
+				},
+				"响应数据类型为 application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"后台已正确响应": {
+					"pass": 1,
+					"fail": 0
+				},
+				"返回数据的长度为10": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1132，id存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1132的商品，name为芝士肠仔，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1132的商品，price为700，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1132的商品，price为700，大于0且小于999999": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1131，id存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1131的商品，name为田园沙拉，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1131的商品，price为2800，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1131的商品，price为2800，大于0且小于999999": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1130，id存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1130的商品，name为时蔬沙拉，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1130的商品，price为2800，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1130的商品，price为2800，大于0且小于999999": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1129，id存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1129的商品，name为生炒牛肉饭，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1129的商品，price为2800，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1129的商品，price为2800，大于0且小于999999": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1134，id存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1134的商品，name为牛扒饭，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1134的商品，price为6800，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1134的商品，price为6800，大于0且小于999999": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1133，id存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1133的商品，name为拿破仑意粉，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1133的商品，price为4200，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1133的商品，price为4200，大于0且小于999999": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1127，id存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1127的商品，name为马芝拉薯条，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1127的商品，price为2500，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1127的商品，price为2500，大于0且小于999999": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1128，id存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1128的商品，name为脆脆皮，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1128的商品，price为2000，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1128的商品，price为2000，大于0且小于999999": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1126，id存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1126的商品，name为凯撒沙拉，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1126的商品，price为2000，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1126的商品，price为2000，大于0且小于999999": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1125，id存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1125的商品，name为菠菜蝴蝶粉，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1125的商品，price为4800，name存在": {
+					"pass": 1,
+					"fail": 0
+				},
+				"id为1125的商品，price为4800，大于0且小于999999": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"gridTitles": [
+				"状态码为200",
+				"本次响应时间为96毫秒，小于200毫秒",
+				"响应数据类型为 application/json",
+				"后台已正确响应",
+				"返回数据的长度为10",
+				"id为1132，id存在",
+				"id为1132的商品，name为芝士肠仔，name存在",
+				"id为1132的商品，price为700，name存在",
+				"id为1132的商品，price为700，大于0且小于999999",
+				"id为1131，id存在",
+				"id为1131的商品，name为田园沙拉，name存在",
+				"id为1131的商品，price为2800，name存在",
+				"id为1131的商品，price为2800，大于0且小于999999",
+				"id为1130，id存在",
+				"id为1130的商品，name为时蔬沙拉，name存在",
+				"id为1130的商品，price为2800，name存在",
+				"id为1130的商品，price为2800，大于0且小于999999",
+				"id为1129，id存在",
+				"id为1129的商品，name为生炒牛肉饭，name存在",
+				"id为1129的商品，price为2800，name存在",
+				"id为1129的商品，price为2800，大于0且小于999999",
+				"id为1134，id存在",
+				"id为1134的商品，name为牛扒饭，name存在",
+				"id为1134的商品，price为6800，name存在",
+				"id为1134的商品，price为6800，大于0且小于999999",
+				"id为1133，id存在",
+				"id为1133的商品，name为拿破仑意粉，name存在",
+				"id为1133的商品，price为4200，name存在",
+				"id为1133的商品，price为4200，大于0且小于999999",
+				"id为1127，id存在",
+				"id为1127的商品，name为马芝拉薯条，name存在",
+				"id为1127的商品，price为2500，name存在",
+				"id为1127的商品，price为2500，大于0且小于999999",
+				"id为1128，id存在",
+				"id为1128的商品，name为脆脆皮，name存在",
+				"id为1128的商品，price为2000，name存在",
+				"id为1128的商品，price为2000，大于0且小于999999",
+				"id为1126，id存在",
+				"id为1126的商品，name为凯撒沙拉，name存在",
+				"id为1126的商品，price为2000，name存在",
+				"id为1126的商品，price为2000，大于0且小于999999",
+				"id为1125，id存在",
+				"id为1125的商品，name为菠菜蝴蝶粉，name存在",
+				"id为1125的商品，price为4800，name存在",
+				"id为1125的商品，price为4800，大于0且小于999999"
+			],
+			"gridData": [
+				[
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true,
+					true
+				]
+			],
+			"tests": {
+				"状态码为200": true,
+				"本次响应时间为96毫秒，小于200毫秒": true,
+				"响应数据类型为 application/json": true,
+				"后台已正确响应": true,
+				"返回数据的长度为10": true,
+				"id为1132，id存在": true,
+				"id为1132的商品，name为芝士肠仔，name存在": true,
+				"id为1132的商品，price为700，name存在": true,
+				"id为1132的商品，price为700，大于0且小于999999": true,
+				"id为1131，id存在": true,
+				"id为1131的商品，name为田园沙拉，name存在": true,
+				"id为1131的商品，price为2800，name存在": true,
+				"id为1131的商品，price为2800，大于0且小于999999": true,
+				"id为1130，id存在": true,
+				"id为1130的商品，name为时蔬沙拉，name存在": true,
+				"id为1130的商品，price为2800，name存在": true,
+				"id为1130的商品，price为2800，大于0且小于999999": true,
+				"id为1129，id存在": true,
+				"id为1129的商品，name为生炒牛肉饭，name存在": true,
+				"id为1129的商品，price为2800，name存在": true,
+				"id为1129的商品，price为2800，大于0且小于999999": true,
+				"id为1134，id存在": true,
+				"id为1134的商品，name为牛扒饭，name存在": true,
+				"id为1134的商品，price为6800，name存在": true,
+				"id为1134的商品，price为6800，大于0且小于999999": true,
+				"id为1133，id存在": true,
+				"id为1133的商品，name为拿破仑意粉，name存在": true,
+				"id为1133的商品，price为4200，name存在": true,
+				"id为1133的商品，price为4200，大于0且小于999999": true,
+				"id为1127，id存在": true,
+				"id为1127的商品，name为马芝拉薯条，name存在": true,
+				"id为1127的商品，price为2500，name存在": true,
+				"id为1127的商品，price为2500，大于0且小于999999": true,
+				"id为1128，id存在": true,
+				"id为1128的商品，name为脆脆皮，name存在": true,
+				"id为1128的商品，price为2000，name存在": true,
+				"id为1128的商品，price为2000，大于0且小于999999": true,
+				"id为1126，id存在": true,
+				"id为1126的商品，name为凯撒沙拉，name存在": true,
+				"id为1126的商品，price为2000，name存在": true,
+				"id为1126的商品，price为2000，大于0且小于999999": true,
+				"id为1125，id存在": true,
+				"id为1125的商品，name为菠菜蝴蝶粉，name存在": true,
+				"id为1125的商品，price为4800，name存在": true,
+				"id为1125的商品，price为4800，大于0且小于999999": true
+			}
+		}
+	],
+	"synced": false
+}
