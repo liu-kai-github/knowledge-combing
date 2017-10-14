@@ -6,5 +6,3 @@
 4. 使用分支开发，master只做merge，减少多人合作的冲突问题
 5. 遇到冲突，弄清原因，不可随意丢弃别人代码
 6. 产品发布上线时，必须打tag，方便将来拉分支修复bug
-
-<iframe src="https://www.baidu.com" width="100%" height="768px"></iframe>
