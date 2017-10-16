@@ -15,7 +15,6 @@ if (true) {
 const a = 1;
 const b = 2;
 const c = 3;
-
 ```
 
 ## 2. 字符串
@@ -31,7 +30,6 @@ const b = 'foo' + a + 'bar';
 const a = 'foobar';
 const b = `foo${a}bar`;
 const c = 'foobar';
-
 ```
 
 * includes()：返回布尔值，表示是否找到了参数字符串。
@@ -44,7 +42,6 @@ const s = 'Hello world!';
 s.includes('o') // true
 s.startsWith('Hello') // true
 s.endsWith('!') // true
-
 ```
 
 ## 3. 数组
@@ -69,7 +66,6 @@ const b = [
     3,
     4,
 ]
-
 ```
 
 * 操作数组
@@ -87,7 +83,6 @@ arr.pop();
 arr.unshift(9);
 // 移除数组开头元素
 arr.unshift();
-
 ```
 
 * 扩展运算符
@@ -101,7 +96,6 @@ const arr2 = [7, 8, ...arr]; // [7, 8, 1, 2, 3, 4]
 
 const arr3 = [...arr1, ...arr2]; // [1, 2, 3, 4, 7, 8, 1, 2, 3, 4];
 
-
 ```
 
 * 遍历数组的值
@@ -114,7 +108,6 @@ for (const item of [1, 2, 3, 4]) {
 // 2
 // 3
 // 4
-
 ```
 
 * filter方法
@@ -123,14 +116,12 @@ for (const item of [1, 2, 3, 4]) {
 [1, 2, 3, 4, 5].filter(x => x > 3); // [4, 5]
 
 [1, 2, 3, 4, 5].filter(x => x * 2 < 5); // [1, 2]
-
 ```
 
 * map方法
 
 ```
 [1, 2, 3, 4, 5].map(x => x * 3); // [ 3, 6, 9, 12, 15 ]
-
 ```
 
 
@@ -138,7 +129,6 @@ for (const item of [1, 2, 3, 4]) {
 ## 4. 对象
 
 * 单行定义的对象，最后一个成员不以逗号结尾。多行定义的对象，最后一个成员以逗号结尾。
-
 ```
 // bad
 const a = { k1: v1, k2: v2, };
@@ -153,7 +143,6 @@ const b = {
     k1: v1,
     k2: v2,
 };
-
 ```
 
 * 遍历对象
@@ -170,13 +159,11 @@ for (const item of Reflect.ownKeys(obj)) {
 // 1
 // b
 // 2
-
 ```
 
 ## 5. 解构赋值
 
 * 使用数组和对象成员对变量赋值时，优先使用解构赋值。
-
 ```
 const arr = [1, 2, 3, 4];
 
@@ -186,7 +173,6 @@ const second = arr[1];
 
 // good
 const [first, second] = arr;
-
 ```
 
 ```
@@ -201,18 +187,15 @@ const b = obj['b'];
 
 // good
 const {a, b: abc} = obj;
-
 ```
 
 ## 6. 函数
 
 * 立即执行函数可以写成箭头函数的形式。
-
 ```
 (() => {
     console.log('Welcome to the Internet.');
 })();
-
 ```
 
 * 那些需要使用函数表达式的场合，尽量用箭头函数代替。因为这样更简洁，而且绑定了this。
@@ -230,7 +213,6 @@ const {a, b: abc} = obj;
 
 // best
 [1, 2, 3].map(x => x * x);
-
 ```
 
 * rest 参数（形式为...变量名），用于获取函数的多余参数
@@ -239,7 +221,6 @@ const {a, b: abc} = obj;
 const toArr = (...values) => values; // [2, 5, 3]
 
 toArr(2, 5, 3); // [2, 5, 3]
-
 ```
 
 ```
@@ -249,7 +230,6 @@ const func = (str, ...items) => {
 }
 
 func('a', 1, 2, 3)
-
 ```
 
 * 注意，rest 参数之后不能再有其他参数（即只能是最后一个参数），否则会报错。
@@ -259,7 +239,6 @@ func('a', 1, 2, 3)
 const = f => (a, ...b, c) {
     // ...
 }
-
 ```
 
 * 函数的参数设置默认值
@@ -270,7 +249,6 @@ const log = (x, y = 'World') => console.log(x, y);
 log('Hello') // Hello World
 log('Hello', 'China') // Hello China
 log('Hello', '') // Hello
-
 ```
 
 ## 7. 控制语句
@@ -309,8 +287,6 @@ log('Hello', '') // Hello
     true || true; // true   
     true || false; // true
     false || false; // false
-
-    
 ```
 
 * 控制语句
@@ -335,7 +311,6 @@ if (flase) {
 } else {
 
 }
-
 ```
 
 * 循环语句
@@ -351,7 +326,6 @@ while (i > 0) {
 // 3
 // 2
 // 1
-
 ```
 
 ```
@@ -363,7 +337,6 @@ for (let i = 0; i < 5; i++) {
 // 2
 // 3
 // 4
-
 ```
 
 
@@ -392,7 +365,6 @@ for (let value of map.values()) {
 for (let item of map.entries()) {
     console.log(item[0], item[1]);
 }
-
 ```
 
 ```
@@ -401,7 +373,6 @@ const map = new Map();
 map.set(1, 'aaa').set(1, 'bbb');
 
 map.get(1) 
-
 ```
 
 * size属性
@@ -414,13 +385,11 @@ map.set('foo', true);
 map.set('bar', false);
 
 map.size // 2
-
 ```
 
 * set(key, value)
     
     set方法设置键名key对应的键值为value，然后返回整个 Map 结构。如果key已经有值，则键值会被更新，否则就新生成该键。
-    
 ```
 const m = new Map();
 
@@ -432,7 +401,6 @@ let map = new Map()
     .set(1, 'a')
     .set(2, 'b')
     .set(3, 'c');
-
 ```
 
 * get(key)
@@ -446,7 +414,6 @@ const hello = function() {console.log('hello');};
 m.set(hello, 'Hello ES6!') // 键是函数
 
 m.get(hello)  // Hello ES6!
-
 ```
 
 * has(key)
@@ -464,7 +431,6 @@ m.has('edition')     // true
 m.has('years')       // false
 m.has(262)           // true
 m.has(undefined)     // true
-
 ```
 
 * delete(key)
@@ -478,7 +444,6 @@ m.has(undefined)     // true
 
 m.delete(undefined)
 m.has(undefined)       // false
-
 ```
 
 * clear()
@@ -493,7 +458,6 @@ map.set('bar', false);
 map.size // 2
 map.clear()
 map.size // 0
-
 ```
 
 * 遍历方法
@@ -506,7 +470,6 @@ map.size // 0
     * forEach()：遍历 Map 的所有成员。
 
     需要特别注意的是，Map 的遍历顺序就是插入顺序。
-    
 ```
 const map = new Map([
     ['F', 'no'],
@@ -544,7 +507,6 @@ for (let [key, value] of map) {
 }
 // "F" "no"
 // "T" "yes"
-
 ```
 
 ## * 10. Set数据结构
@@ -552,7 +514,6 @@ for (let [key, value] of map) {
 * Set类似于数组，但是成员的值都是唯一的，没有重复的值。
 
 * Set 本身是一个构造函数，用来生成 Set 数据结构。
-
 ```
 const s = new Set();
 
@@ -565,7 +526,6 @@ for (let i of s) {
 // 3 
 // 5 
 // 4
-
 ```
 
 ```
@@ -578,7 +538,6 @@ for (let i of s) {
 // 2 
 // 3 
 // 4
-
 ```
 
 * 操作方法
@@ -587,7 +546,6 @@ for (let i of s) {
     * delete(value)：删除某个值，返回一个布尔值，表示删除是否成功。
     * has(value)：返回一个布尔值，表示该值是否为Set的成员。
     * clear()：清除所有成员，没有返回值。
-
 ```
 s.add(1).add(2).add(2);
 // 注意2被加入了两次
@@ -603,7 +561,6 @@ s.has(2) // false
 
 s.clear();
 s.size // 0
-
 ```
 
 * 遍历操作
@@ -612,7 +569,6 @@ s.size // 0
     * values()：返回键值的遍历器
     * entries()：返回键值对的遍历器
     * forEach()：使用回调函数遍历每个成员
-
 ```
 let set = new Set(['red', 'green', 'blue']);
 
@@ -636,7 +592,6 @@ for (let item of set.entries()) {
 // ["red", "red"]
 // ["green", "green"]
 // ["blue", "blue"]
-
 ```
 
 
