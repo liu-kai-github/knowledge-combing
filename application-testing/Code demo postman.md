@@ -15,14 +15,12 @@ tests['数字大于0'] = 1;  // true
 tests['数字小于0'] = -1;  // true
 tests['null'] = null;  // false
 tests['undefind'] = undefined;  // false
-
 ```
 
 * 响应内容是否包含哪些字符
 
 ```
 tests["Body matches string"] = responseBody.has("string_you_want_to_search");
-
 ```
 
 * 响应体数据的详细检查
@@ -30,28 +28,24 @@ tests["Body matches string"] = responseBody.has("string_you_want_to_search");
 ```
 var jsonData = JSON.parse(responseBody);
 tests["Your test name"] = jsonData.value === 100;
-
 ```
 
 * 响应头的详细检查
 
 ```
 tests["Content-Type is present"] = postman.getResponseHeader("Content-Type");
-
 ```
 
 * 响应时间的检查
 
 ```
 tests["Response time is less than 200ms"] = responseTime < 200;
-
 ```
 
 * http响应码检查
 
 ```
 tests["Status code is 200"] = responseCode.code === 200;
-
 ```
 
 * 测试通用模板
@@ -66,7 +60,6 @@ if(responseCode.code === 200) {
 }
 
 //需求逻辑判断
-
 
 ```
 
@@ -93,7 +86,6 @@ if (jsonData.code === 0) {
 } else {
     tests['后台未正确响应']
 }
-    
 ```
 
 * 测试 ``http://wxtest.xw18.cn/producelist?featured=1&page_no=0&page_size=10&shop_id=13439``
@@ -126,8 +118,6 @@ if (jsonData.code === 0) {
 } else {
     tests['后台未正确响应']
 }
-
-
 ```
 
 
